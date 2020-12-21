@@ -1,0 +1,30 @@
+<app-page>
+  <div class="search">
+    <div class="container">
+      <h1 class="search__title">Введите название города:</h1>
+      <form class="search-form">
+        <input
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="handleSearch()"
+          class="search-form__input"
+          placeholder="Название города"
+          type="text"
+          name="search"
+        >
+        <button
+          class="search-form__send-button"
+          type="button"
+          (click)="handleSearch()"
+        >
+          Узнать погоду на 5 дней
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="weather-data">
+    <div class="container">
+      <app-list [listData]="weatherData" [sortButtons]="sortButtons"></app-list>
+      <h3 *ngIf="isShowError">Такой город не найден...</h3>
+    </div>
+  </div>
+</app-page>

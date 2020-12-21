@@ -1,0 +1,76 @@
+@import './../../../styles/variables';
+
+.search {
+  background-color: $blue;
+  padding: 20px 0 40px;
+}
+
+.search__title {
+  color: $white;
+
+  @media (max-width: 720px) {
+    text-align: center;
+  }
+}
+
+.search-form {
+  display: flex;
+  gap: 16px;
+
+  @media (max-width: 980px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.search-form__input {
+  box-sizing: border-box;
+  width: 60%;
+  height: 44px;
+  border: 1px solid $gray;
+  border-radius: 40px;
+  background-color: $white;
+  outline: none;
+  padding: 0 24px;
+  font-family: 'Noto Sans', sans-serif;
+  color: $black;
+  font-size: 16px;
+  transition: all .4s ease-out;
+
+  &::placeholder {
+    color: $gray;
+  }
+
+  &:focus {
+    border-color: $blue;
+  }
+
+  @media (max-width: 980px) {
+    width: 100%;
+  }
+}
+
+.search-form__send-button {
+  box-sizing: border-box;
+  height: 44px;
+  border: none;
+  border-radius: 40px;
+  background-color: $orange;
+  outline: none;
+  padding: 0 40px;
+  font-family: 'Noto Sans', sans-serif;
+  color: $white;
+  font-size: 20px;
+  line-height: 44px;
+  cursor: pointer;
+  transition: all .4s ease-out;
+
+  &:hover {
+    background-color: $orange-light;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    width: 100%;
+  }
+}

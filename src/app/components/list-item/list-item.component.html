@@ -1,0 +1,11 @@
+<div class="list-item">
+  <p class="list-item__index">{{listItem.index}}</p>
+  <p class="list-item__date">{{listItem.date | date: 'mediumDate'}}</p>
+  <img
+    class="list-item__icon"
+    src="{{listItem.iconUrl}}"
+    alt="{{listItem.iconDescription}}"
+  >
+  <p class="list-item__title">{{listItem.title}}</p>
+  <p class="list-item__description">{{listItem.description}}</p>
+</div>

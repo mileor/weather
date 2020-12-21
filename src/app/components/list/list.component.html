@@ -1,0 +1,16 @@
+<div class="list">
+  <ng-container *ngIf="listData && listData.length > 0">
+    <button
+      *ngFor="let button of sortButtons"
+      class="list__sort-btn"
+      type="button"
+      (click)="button.sortHandler()"
+    >
+      {{button.text}}
+      <span class="list__btn-icon">{{button.icon}}</span>
+    </button>
+  </ng-container>
+  <ng-container *ngFor="let item of listData">
+    <app-list-item [listItem]="item"></app-list-item>
+  </ng-container>
+</div>

@@ -1,0 +1,52 @@
+@import './../../../styles/variables';
+
+.list {
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  @media (max-width: 720px) {
+    min-width: 28%;
+  }
+}
+
+.list__sort-btn {
+  box-sizing: border-box;
+  height: 32px;
+  border: 2px solid $blue;
+  border-radius: 40px;
+  background-color: $white;
+  outline: none;
+  padding: 0 24px;
+  font-family: 'Noto Sans', sans-serif;
+  color: $blue;
+  margin-right: 24px;
+  font-size: 16px;
+  line-height: 28px;
+  cursor: pointer;
+  transition: all .4s ease-out;
+
+  &:hover {
+    border-color: $blue-light;
+    color: $blue-light;
+  }
+
+  @media (max-width: 720px) {
+    width: 100%;
+    margin-right: 0;
+
+    &:first-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 4px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+
+.list__btn-icon {
+  font-size: 20px;
+  padding-left: 8px;
+}

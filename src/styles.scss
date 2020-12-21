@@ -1,0 +1,20 @@
+@import './styles/variables';
+
+body {
+  margin: 0;
+  background-color: $white;
+  font-family: 'Noto Sans', sans-serif;
+  color: $black;
+}
+
+.container {
+  padding: 0 calc(50vw - 590px);
+
+  @media (max-width: 1200px) {
+    padding: 0 calc(50vw - 480px);
+  }
+
+  @media (max-width: 980px) {
+    padding: 0 24px;
+  }
+}
