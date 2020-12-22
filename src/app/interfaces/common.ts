@@ -3,7 +3,7 @@ export interface WeatherDataResponse {
     coord: {
       lat: number,
       lon: number,
-    }
+    };
     country: string,
     id: number,
     name: string,

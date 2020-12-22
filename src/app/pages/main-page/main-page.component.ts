@@ -37,9 +37,16 @@ export class MainPageComponent {
     this.route.params?.subscribe(params => this.searchByUrl(params.searchTerm));
   }
 
+  handleSearch(): void {
+    if (this.searchTerm.trim().length > 0) {
+      this.router.navigate(['/search', this.searchTerm]);
+      this.getWeather(this.searchTerm);
+    }
+  }
+
   private searchByUrl(searchTerm: string): void {
-    this.searchTerm = searchTerm;
-    if (this.searchTerm) {
+    if (searchTerm && searchTerm.trim().length > 0) {
+      this.searchTerm = searchTerm;
       this.getWeather(this.searchTerm);
     }
   }
@@ -47,10 +54,10 @@ export class MainPageComponent {
   private sortByDateHandler(): void {
     this.sortButtons[0].isSortByAsc = !this.sortButtons[0].isSortByAsc;
     if (this.sortButtons[0].isSortByAsc) {
-      this.weatherData.sort((a: ListItem, b: ListItem) => +b.date - +a.date);
+      this.weatherData.sort((a: ListItem, b: ListItem) => b.timestamp - a.timestamp);
       this.sortButtons[0].icon = '↑';
     } else {
-      this.weatherData.sort((a: ListItem, b: ListItem) => +a.date - +b.date);
+      this.weatherData.sort((a: ListItem, b: ListItem) => a.timestamp - b.timestamp);
       this.sortButtons[0].icon = '↓';
     }
   }
@@ -76,7 +83,7 @@ export class MainPageComponent {
   private handleWeatherData(weatherDataResponse: WeatherDataResponse): void {
     const weatherByTime = weatherDataResponse.list.reduce((acc: ListItem[], item: WeatherData) => {
       const date = new Date((item.dt - weatherDataResponse.city.timezone) * 1000);
-      const iconUrl = `http://openweathermap.org/img/wn/${item.weather[0].icon.slice(0, 2) + 'd'}@2x.png`;
+      const iconUrl = `https://openweathermap.org/img/wn/${item.weather[0].icon.slice(0, 2) + 'd'}@2x.png`;
       acc.push({
         index: `${new DatePipe('ru-Ru').transform(date, 'E')}`,
         date,
@@ -108,12 +115,4 @@ export class MainPageComponent {
     this.weatherData = [];
     this.isShowError = true;
   }
-
-  handleSearch(): void {
-    if (this.searchTerm.trim().length > 0) {
-      this.router.navigate(['/search', this.searchTerm]);
-      this.getWeather(this.searchTerm);
-    }
-  }
-
 }
